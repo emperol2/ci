@@ -16,5 +16,10 @@ module Test
     def test_home_page_title
       assert_equal('Yi Zeng', @driver.title)
     end
+	
+	def test_home_page_title2
+	  assert_equal('Yi Zeng2', @driver.title)
+	end
+	
   end
 end

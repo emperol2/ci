@@ -1,6 +1,6 @@
 require 'selenium-webdriver'
 require 'test/unit'
-require 'phantomjs'
+#require 'phantomjs'
 
 module Test
   class TestHomePage < Test::Unit::TestCase

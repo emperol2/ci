@@ -67,7 +67,7 @@ module Test
 
       end
       ary.uniq.each do |a|
-        puts a
+        #puts a
         res = Net::HTTP.get_response(URI(a))
         assert_not_equal('404', res.code, "This is error #{a}")
         # if res.code == '200'

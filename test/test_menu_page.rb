@@ -1,6 +1,7 @@
 require 'selenium-webdriver'
 require 'test/unit'
 #require 'phantomjs'
+#test CodeHub
 
 module Test
   class TestHomePage < Test::Unit::TestCase

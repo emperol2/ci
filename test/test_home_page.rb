@@ -105,22 +105,33 @@ module Test
 
 
     def verify_visible_image(how, what)
-      imgList = @driver.find_elements(how, what)
-      imgList.each do |i|
-        #puts i.attribute('src')
-        res = Net::HTTP.get_response(URI(i.attribute('src')))
-        assert_equal('200', res.code, "This is error #{i.attribute('src')}")
+      begin
+        imgList = @driver.find_elements(how, what)
+        imgList.each do |i|
+          #puts i.attribute('src')
+          res = Net::HTTP.get_response(URI(i.attribute('src')))
+          assert_equal('200', res.code, "This is error #{i.attribute('src')}")
+        end
+      rescue Selenium::WebDriver::Error::NoSuchElementError
+        p "Error #{what}"
+        next
       end
+
     end
 
     def verify_visible_image_in_css(how, what)
-      imgListCSS = @driver.find_element(how, what)
-      #puts imgListCSS.css_value('background-image')
-      urlString = imgListCSS.css_value('background-image')
-      urlArray = urlString.split('(')
-      url = urlArray[1].split(')')
-      res = Net::HTTP.get_response(URI(url[0]))
-      assert_equal('200', res.code, "This is error #{url[0]}")
+      begin
+        imgListCSS = @driver.find_element(how, what)
+        #puts imgListCSS.css_value('background-image')
+        urlString = imgListCSS.css_value('background-image')
+        urlArray = urlString.split('(')
+        url = urlArray[1].split(')')
+        res = Net::HTTP.get_response(URI(url[0]))
+        assert_equal('200', res.code, "This is error #{url[0]}")
+      rescue Selenium::WebDriver::Error::NoSuchElementError
+        p "Error #{what}"
+        next
+      end
     end
 
     def how_many_rows(how, what)

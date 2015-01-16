@@ -1,10 +1,9 @@
 require 'selenium-webdriver'
 require 'test/unit'
 #require 'phantomjs'
-#test CodeHub
 
 module Test
-  class TestHomePage < Test::Unit::TestCase
+  class TestMenuPage < Test::Unit::TestCase
 
     def setup
       @driver = Selenium::WebDriver.for :phantomjs

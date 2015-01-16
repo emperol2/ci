@@ -114,7 +114,6 @@ module Test
         end
       rescue Selenium::WebDriver::Error::NoSuchElementError
         p "Error #{what}"
-        next
       end
 
     end
@@ -130,7 +129,6 @@ module Test
         assert_equal('200', res.code, "This is error #{url[0]}")
       rescue Selenium::WebDriver::Error::NoSuchElementError
         p "Error #{what}"
-        next
       end
     end
 

@@ -7,7 +7,7 @@ module Test
 
     def setup
       @driver = Selenium::WebDriver.for :phantomjs
-      @driver.navigate.to('http://www.burgerking.fi/menu')
+      @driver.navigate.to('http://www.burgerking.co.nz/menu')
       @driver.manage.timeouts.implicit_wait = 20
       @wait = Selenium::WebDriver::Wait.new :timeout => 20
     end

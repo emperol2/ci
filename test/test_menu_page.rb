@@ -61,7 +61,7 @@ module Test
             end
           end
         rescue NoMethodError
-          p "Error #{i.attribute('innerHTML')}"
+          p "URL Error: #{i.attribute('innerHTML')}"
           next
         end
 

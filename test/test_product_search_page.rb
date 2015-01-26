@@ -4,7 +4,7 @@ require 'selenium-webdriver'
 
 
 module Test
-  class TestSearchPage < Test::Unit::TestCase
+  class TestProductSearchPage < Test::Unit::TestCase
 
     # Called before every test method runs. Can be used
     # to set up fixture information.
@@ -18,15 +18,28 @@ module Test
     # Called after every test method runs. Can be used to tear
     # down fixture information.
 
-    def test_search_found
+    def test_product_search_found
       @driver.find_element(:css, '#edit-term').send_keys('burger')
       @driver.find_element(:css, '#views-exposed-form-search-page button').click
       assert @driver.title.include?('search')
       resultList = @driver.find_elements(:css, '.itemsList li')
       resultList.each do |r|
         htmlResults = r.attribute('innerHTML')
-        assert (htmlResults.match /burger/i)
+        assert((htmlResults.match /burger/i), "The result in the table should contain 'burger'")
       end
+      resultsText = @driver.find_element(:css, 'div.resultsNo').text
+      resultsSplit = resultsText.split(/[a-zA-Z ]/)
+      getResultNumber = resultsSplit[0]
+      assert(getResultNumber.to_i > 0, 'Search result number should greater than 0')
+    end
+
+    def test_product_search_not_found
+      @driver.find_element(:css, '#edit-term').send_keys('not found')
+      @driver.find_element(:css, '#views-exposed-form-search-page button').click
+      assert(@driver.title.include?('search'))
+      assert((element_present?(:css, '.itemsList li') == false), 'Page title is incorrect')
+      assert((@driver.find_element(:css, 'h3.sectionTitle').text.match /not found/i), 'Title tag is incorrect')
+      assert((@driver.find_element(:css, 'div.resultsNo').text.match /no/i), 'Search result number is incorrect')
     end
 
     def element_present?(how, what)

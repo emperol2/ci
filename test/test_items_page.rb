@@ -88,12 +88,11 @@ module Test
           #   res = Net::HTTP.get_response(URI(i.attribute('src')))
           #   assert_equal('200', res.code, "This is error #{i.attribute('src')}")
           # end
-          if i.attribute('src').include?('square_thumbnail') == true && i.attribute('typeof') == nil
+          if i.attribute('src').include?('square_thumbnail') == true
             p i.attribute('src')
             res = Net::HTTP.get_response(URI(i.attribute('src')))
             assert_equal('200', res.code, "This is error #{i.attribute('src')}")
           end
-          p "\n"
         end
       end
 

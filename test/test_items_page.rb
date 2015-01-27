@@ -8,8 +8,8 @@ module Test
     def setup
       @driver = Selenium::WebDriver.for :phantomjs
       @driver.navigate.to('http://www.bk.com/menu')
-      @driver.manage.timeouts.implicit_wait = 20
-      @wait = Selenium::WebDriver::Wait.new :timeout => 20
+      @driver.manage.timeouts.implicit_wait = 50
+      @wait = Selenium::WebDriver::Wait.new :timeout => 50
     end
 
     def teardown
@@ -36,7 +36,7 @@ module Test
         end
       end
 
-      itemsArray.each do |a|
+      itemsArray.uniq.each do |a|
         @driver.navigate.to(a)
         #p a
         imgList = @driver.find_elements(:tag_name, 'img')
@@ -48,6 +48,7 @@ module Test
           #   assert_equal('200', res.code, "This is error #{i.attribute('src')}")
           # end
           if i.attribute('src').include?('square_thumbnail') == false && i.attribute('typeof') != nil
+            p i.attribute('src')
             res = Net::HTTP.get_response(URI(i.attribute('src')))
             assert_equal('200', res.code, "This is error #{i.attribute('src')}")
           end

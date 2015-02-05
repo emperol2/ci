@@ -10,8 +10,8 @@ module Test
     # to set up fixture information.
     def setup
       @driver = Selenium::WebDriver.for :phantomjs
-      #@driver.navigate.to('http://www.bk.com/locations')
-      @driver.navigate.to('http://originstg.bk.com/locations')
+      @driver.navigate.to('http://www.bk.com/locations')
+      #@driver.navigate.to('http://originstg.bk.com/locations')
       @driver.manage.timeouts.implicit_wait = 20
       @wait = Selenium::WebDriver::Wait.new :timeout => 20
     end

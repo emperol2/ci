@@ -7,7 +7,8 @@ module Test
 
     def setup
       @driver = Selenium::WebDriver.for :phantomjs
-      @driver.navigate.to('http://www.bk.com/menu')
+      #@driver.navigate.to('http://www.bk.com/menu')
+      @driver.navigate.to('http://originstg.bk.com/menu')
       @driver.manage.timeouts.implicit_wait = 50
       @driver.manage.timeouts.script_timeout = 20
       @wait = Selenium::WebDriver::Wait.new :timeout => 10
@@ -20,7 +21,8 @@ module Test
     def test_visible_image_items
       ary = Array.new
       itemsArray = Array.new
-      nodeURL = 'http://www.bk.com/node/'
+      #nodeURL = 'http://www.bk.com/node/'
+      nodeURL = 'http://originstg.bk.com/node'
 
       cagetoryList = @driver.find_elements(:css, '.food-category a')
       cagetoryList.each do |c|
@@ -61,7 +63,8 @@ module Test
     def test_visible_image_youmayalsolike
       ary = Array.new
       itemsArray = Array.new
-      nodeURL = 'http://www.bk.com/node/'
+      #nodeURL = 'http://www.bk.com/node/'
+      nodeURL = 'http://originstg.bk.com/node'
 
       cagetoryList = @driver.find_elements(:css, '.food-category a')
       cagetoryList.each do |c|
@@ -103,7 +106,8 @@ module Test
     def test_nutrition_table
       ary = Array.new
       itemsArray = Array.new
-      nodeURL = 'http://www.bk.com/node/'
+      #nodeURL = 'http://www.bk.com/node/'
+      nodeURL = 'http://originstg.bk.com/node'
 
       cagetoryList = @driver.find_elements(:css, '.food-category a')
       cagetoryList.each do |c|

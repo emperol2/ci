@@ -10,3 +10,6 @@
 
 16 Feb 2014
 - Regression testing Cheese Live
+
+17 Feb 2014
+- Say Cheese on Live

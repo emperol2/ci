@@ -20,8 +20,8 @@ module Test
     # down fixture information.
 
     def test_product_search_found
-      @driver.find_element(:css, '#edit-term').send_keys('burger')
-      @driver.find_element(:css, '#views-exposed-form-search-page button').click
+      @driver.find_element(:css, '#edit-keys-1').send_keys('burger')
+      @driver.find_element(:css, '##search-api-page-search-form > div > div > button').click
       assert @driver.title.include?('search')
       resultList = @driver.find_elements(:css, '.itemsList li')
       resultList.each do |r|
@@ -35,8 +35,8 @@ module Test
     end
 
     def test_product_search_not_found
-      @driver.find_element(:css, '#edit-term').send_keys('not found')
-      @driver.find_element(:css, '#views-exposed-form-search-page button').click
+      @driver.find_element(:css, '#edit-keys-1').send_keys('not found')
+      @driver.find_element(:css, '##search-api-page-search-form > div > div > button').click
       assert(@driver.title.include?('search'))
       assert((element_present?(:css, '.itemsList li') == false), 'Page title is incorrect')
       assert((@driver.find_element(:css, 'h3.sectionTitle').text.match /not found/i), 'Title tag is incorrect')

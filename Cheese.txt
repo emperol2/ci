@@ -34,3 +34,6 @@
 
 23 March 2015
 - Say Cheese on Live Content updates
+
+24 March 2015
+- Say Cheese and removed the sliders

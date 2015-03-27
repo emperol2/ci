@@ -37,3 +37,6 @@
 
 24 March 2015
 - Say Cheese and removed the sliders
+
+27 March 2015
+- Say Cheese two banners

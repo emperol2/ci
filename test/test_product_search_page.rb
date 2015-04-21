@@ -30,17 +30,17 @@ module Test
       end
       resultsText = @driver.find_element(:css, 'div.resultsNo').text
       resultsSplit = resultsText.split(/[a-zA-Z ]/)
-      getResultNumber = resultsSplit[0]
+      getResultNumber = resultsSplit[12]
       assert(getResultNumber.to_i > 0, 'Search result number should greater than 0')
     end
 
     def test_product_search_not_found
-      @driver.find_element(:css, '#edit-keys-3').send_keys('not found')
+      @driver.find_element(:css, '#edit-keys-3').send_keys('aaaaaaaaaaa')
       @driver.find_element(:css, '#search-api-page-search-form > div > div > button').click
       assert(@driver.title.include?('Search'))
       assert((element_present?(:css, '.itemsList li') == false), 'Page title is incorrect')
-      assert((@driver.find_element(:css, 'h3.sectionTitle').text.match /not found/i), 'Title tag is incorrect')
-      assert((@driver.find_element(:css, 'div.resultsNo').text.match /no/i), 'Search result number is incorrect')
+      assert((@driver.find_element(:css, 'h3.sectionTitle').text.match /aaaaaaaaaaa/i), 'Title tag is incorrect')
+      assert((@driver.find_element(:css, 'div.resultsNo').text.match /No/i), 'Search result number is incorrect')
     end
 
     def element_present?(how, what)

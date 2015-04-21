@@ -132,11 +132,11 @@ module Test
           nutritionalList = @driver.find_elements(:css, 'li.calories .number')
           #p nutritionalList[0].text
           if nutritionalList[0].text.empty?
-            p "error #{a}"
+            p "No Table #{a}"
           end
             #assert_not_empty(nutritionalList[0].text)
         rescue Selenium::WebDriver::Error::TimeOutError
-          p "Error #{a}"
+          p "TimeOutError #{a}"
           next
         end
 

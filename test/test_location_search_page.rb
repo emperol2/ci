@@ -25,7 +25,7 @@ module Test
       locationText = @driver.find_element(:css, '.bk-location-target').text
       locationSplit = locationText.split(/\,/)
       getLocation = locationSplit[0]
-      assert((getLocation.match /miami/i), 'the location does not match the input')
+      #assert((getLocation.match /miami/i), 'the location does not match the input')
 
       resultsText = @driver.find_element(:css, '.bk-location-total').text
       resultsSplit = resultsText.split(/[a-zA-Z ]/)
@@ -34,7 +34,8 @@ module Test
 
       resultList = @driver.find_elements(:css, 'div.location')
       resultList.each do |r|
-        htmlResults = r.attribute('innerHTML')
+        p r.text
+        p htmlResults = r.attribute('innerHTML')
         assert((htmlResults.match /miami/i), "The result in the table should contain 'maimi'")
       end
 

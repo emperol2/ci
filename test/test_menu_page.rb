@@ -9,8 +9,8 @@ module Test
       @driver = Selenium::WebDriver.for :phantomjs
       @driver.navigate.to('http://www.bk.com/menu')
       #@driver.navigate.to('http://originstg.bk.com/menu')
-      @driver.manage.timeouts.implicit_wait = 20
-      @wait = Selenium::WebDriver::Wait.new :timeout => 20
+      @driver.manage.timeouts.implicit_wait = 60
+      @wait = Selenium::WebDriver::Wait.new :timeout => 25
     end
 
     def teardown

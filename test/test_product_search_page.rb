@@ -12,8 +12,8 @@ module Test
       @driver = Selenium::WebDriver.for :phantomjs
       @driver.navigate.to('http://www.bk.com/search')
       #@driver.navigate.to('http://originstg.bk.com/search')
-      @driver.manage.timeouts.implicit_wait = 20
-      @wait = Selenium::WebDriver::Wait.new :timeout => 20
+      @driver.manage.timeouts.implicit_wait = 60
+      @wait = Selenium::WebDriver::Wait.new :timeout => 25
     end
 
     # Called after every test method runs. Can be used to tear

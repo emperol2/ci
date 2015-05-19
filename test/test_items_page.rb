@@ -128,6 +128,7 @@ module Test
         @driver.navigate.to(a)
         #p a
         begin
+          sleep 2
           @wait.until {@driver.find_element(:css, 'li.calories .number').displayed?}
           nutritionalList = @driver.find_elements(:css, 'li.calories .number')
           #p nutritionalList[0].text

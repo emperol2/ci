@@ -12,7 +12,7 @@ module Test
       @driver = Selenium::WebDriver.for :phantomjs
       @driver.navigate.to('http://www.bk.com/search')
       #@driver.navigate.to('http://originstg.bk.com/search')
-      @driver.manage.timeouts.implicit_wait = 60
+      @driver.manage.timeouts.implicit_wait = 70
       @wait = Selenium::WebDriver::Wait.new :timeout => 25
     end
 
@@ -22,6 +22,7 @@ module Test
     def test_product_search_found
       @driver.find_element(:css, '#edit-keys-3').send_keys('burger')
       @driver.find_element(:css, '#search-api-page-search-form > div > div > button').click
+      sleep 2
       assert @driver.title.include?('Search')
       resultList = @driver.find_elements(:css, '.itemsList li')
       resultList.each do |r|
@@ -37,6 +38,7 @@ module Test
     def test_product_search_not_found
       @driver.find_element(:css, '#edit-keys-3').send_keys('aaaaaaaaaaa')
       @driver.find_element(:css, '#search-api-page-search-form > div > div > button').click
+      sleep 2
       assert(@driver.title.include?('Search'))
       assert((element_present?(:css, '.itemsList li') == false), 'Page title is incorrect')
       assert((@driver.find_element(:css, 'h3.sectionTitle').text.match /aaaaaaaaaaa/i), 'Title tag is incorrect')

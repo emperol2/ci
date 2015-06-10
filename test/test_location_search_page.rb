@@ -21,6 +21,7 @@ module Test
 
     def test_location_search_found
       @driver.navigate.to('http://www.bk.com/locations?field_geofield_distance[origin][lat]=25.7616798&field_geofield_distance[origin][lon]=-80.19179020000001')
+      sleep 2
       assert @driver.title.include?('Find a Burger King near you')
       locationText = @driver.find_element(:css, '.bk-location-target').text
       locationSplit = locationText.split(/\,/)
@@ -44,6 +45,7 @@ module Test
     def test_location_search_not_found
       @driver.find_element(:css, '.locInput input').send_keys('bangkok')
       @driver.find_element(:css, 'div.locInput a').click
+      sleep 2
       assert @driver.title.include?('Find a Burger King near you')
       assert((element_present?(:css, 'div.location') == false), 'Table should not shown when search not found')
       assert((@driver.find_element(:css, 'h2.sectionTitle').text.match /none found/i), 'the result should be not found')

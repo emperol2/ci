@@ -55,3 +55,6 @@
 
 1 July 2015
 - Say Cheese
+
+3 July 2015
+- Update timeout

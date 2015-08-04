@@ -96,7 +96,7 @@ module Test
 
     def test_home_bk_app
         verify_visible_image_in_css(:css, '.bkDelivers')
-        assert @driver.find_element(:css, 'section.bkDelivers h3.title').text.include?'App'
+        assert @driver.find_element(:css, 'section.bkDelivers h3.title').text.include?'APP'
         assert_not_nil @driver.find_element(:css, 'section.bkDelivers h4.subtitle').text
     end
 

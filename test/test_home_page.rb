@@ -88,10 +88,16 @@ module Test
       assert_not_nil @driver.find_element(:css, 'section.madeToOrder h4.subtitle').text
     end
 
-    def test_home_bk_delivers
-      verify_visible_image_in_css(:css, '.bkDelivers')
-      assert @driver.find_element(:css, 'section.bkDelivers h3.title').text.include?'delivers'
-      assert_not_nil @driver.find_element(:css, 'section.bkDelivers h4.subtitle').text
+    # def test_home_bk_delivers
+    #   verify_visible_image_in_css(:css, '.bkDelivers')
+    #   assert @driver.find_element(:css, 'section.bkDelivers h3.title').text.include?'delivers'
+    #   assert_not_nil @driver.find_element(:css, 'section.bkDelivers h4.subtitle').text
+    # end
+
+    def test_home_bk_app
+        verify_visible_image_in_css(:css, '.bkDelivers')
+        assert @driver.find_element(:css, 'section.bkDelivers h3.title').text.include?'App'
+        assert_not_nil @driver.find_element(:css, 'section.bkDelivers h4.subtitle').text
     end
 
     def test_home_bk_callouts
@@ -101,8 +107,6 @@ module Test
         assert_not_nil c.text
       end
     end
-
-
 
 
     def verify_visible_image(how, what)

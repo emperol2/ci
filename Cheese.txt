@@ -85,3 +85,6 @@
 
 13 August 2015
 - Regression
+
+19 August 2015
+- Added verify_test method

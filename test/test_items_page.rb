@@ -16,6 +16,7 @@ module Test
 
     def teardown
       @driver.quit
+      p @verification_errors
     end
 
     def test_visible_image_items
@@ -53,7 +54,7 @@ module Test
           if i.attribute('src').include?('square_thumbnail') == false && i.attribute('typeof') != nil
             p i.attribute('src')
             res = Net::HTTP.get_response(URI(i.attribute('src')))
-            assert_equal('200', res.code, "This is error #{i.attribute('src')}")
+            verify_test { assert_equal('200', res.code, "This is error #{i.attribute('src')}") }
           end
         end
       end
@@ -95,7 +96,7 @@ module Test
           if i.attribute('src').include?('square_thumbnail') == true
             p i.attribute('src')
             res = Net::HTTP.get_response(URI(i.attribute('src')))
-            assert_equal('200', res.code, "This is error #{i.attribute('src')}")
+            verify_test { assert_equal('200', res.code, "This is error #{i.attribute('src')}") }
           end
         end
       end
@@ -146,8 +147,11 @@ module Test
 
     end
 
-
-
+    def verify_test(&blk)
+      yield
+    rescue MiniTest::Assertion => ex
+      @verification_errors << ex
+    end
 
   end
 end
